@@ -1,70 +1,88 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+```markdown
+# 💸 Expense Tracker App
 
-In the project directory, you can run:
+A modern, responsive, and feature-rich expense tracking application built with **React**, **Chart.js**, and **Tailwind CSS**. Track your daily expenses, analyze spending habits with interactive charts, and even convert currencies in real time.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 📊 **Data Visualization** – Track expenses over time and by category with **line** and **doughnut** charts.
+- 🌍 **Currency Conversion** – Instantly switch between popular currencies like USD, EUR, GBP, JPY, and INR using real-time exchange rates.
+- 💾 **LocalStorage Support** – Persist expenses and settings across sessions.
+- 🧾 **Expense Management** – Add, edit, and delete expense entries with ease.
+- 📆 **Time Filters** – Filter data by week, month, or year.
+- 📱 **Responsive Design** – Optimized for mobile and desktop views.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Tech Stack
 
-### `npm run build`
+- **Frontend**: React, Tailwind CSS
+- **Charts**: Chart.js, react-chartjs-2
+- **Currency API**: [exchangerate.host](https://exchangerate.host)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📦 Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Samuel-Hailemariam-Seifu/expense-tracker.git
+   cd expense-tracker
+   ```
 
-### `npm run eject`
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Start the development server**:
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will be available at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠 Project Structure
 
-## Learn More
+```
+src/
+│
+├── components/
+│   ├── EditExpenseModal.js
+│   ├── ExpenseCharts.js
+│   ├── CurrencySelector.js
+│   └── TabView.js
+│
+├── hooks/
+│   └── useCurrencyConverter.js
+│
+├── App.js
+├── App.css
+└── index.js
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📷 Screenshots
 
-### Code Splitting
+<!-- Add your screenshots here -->
+![Dashboard Screenshot: Analytics](./src/assets/screenshot-1.png)
+![Dashboard Screenshot: Expense List](./src/assets/screenshot-2.png)
+![Dashboard Screenshot: Expense Summary](./src/assets/screenshot-3.png)
+![Dashboard Screenshot: Add Expense](./src/assets/screenshot-4.png)
+![Dashboard Screenshot: Update Expense](./src/assets/screenshot-5.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## 🙌 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pull requests are welcome!  
+For major changes, please open an issue first to discuss what you'd like to change.
