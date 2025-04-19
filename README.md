@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # 💸 Expense Tracker App
 
 A modern, responsive, and feature-rich expense tracking application built with **React**, **Chart.js**, and **Tailwind CSS**. Track your daily expenses, analyze spending habits with interactive charts, and even convert currencies in real time.
