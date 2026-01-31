@@ -28,8 +28,7 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
       <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-5 sm:p-7 w-full max-w-md animate-in fade-in zoom-in duration-200">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6 flex items-center">
-          <span className="mr-2 text-2xl">✏️</span>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6">
           Edit Expense
         </h2>
         
@@ -63,7 +62,7 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
             >
               {categories.map(cat => (
                 <option key={cat.id} value={cat.id}>
-                  {cat.icon} {cat.name}
+                  {cat.name}
                 </option>
               ))}
             </select>
@@ -83,18 +82,16 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
             <button
               type="submit"
               className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 px-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 
-                       transition-all duration-200 flex items-center justify-center text-sm font-semibold shadow-md hover:shadow-lg"
+                       transition-all duration-200 text-sm font-semibold shadow-md hover:shadow-lg"
             >
-              <span className="mr-2">💾</span>
               Save Changes
             </button>
             <button
               type="button"
               onClick={onCancel}
               className="flex-1 bg-gray-100 text-gray-700 py-2.5 px-4 rounded-xl hover:bg-gray-200 
-                       transition-all duration-200 flex items-center justify-center text-sm font-semibold"
+                       transition-all duration-200 text-sm font-semibold"
             >
-              <span className="mr-2">❌</span>
               Cancel
             </button>
           </div>

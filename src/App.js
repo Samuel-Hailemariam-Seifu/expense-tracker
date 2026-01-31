@@ -15,13 +15,13 @@ const CURRENCIES = [
 ];
 
 const EXPENSE_CATEGORIES = [
-  { id: 'food', name: 'Food & Dining', icon: '🍽️' },
-  { id: 'transport', name: 'Transportation', icon: '🚗' },
-  { id: 'shopping', name: 'Shopping', icon: '🛍️' },
-  { id: 'bills', name: 'Bills & Utilities', icon: '📱' },
-  { id: 'entertainment', name: 'Entertainment', icon: '🎮' },
-  { id: 'healthcare', name: 'Healthcare', icon: '🏥' },
-  { id: 'other', name: 'Other', icon: '📦' }
+  { id: 'food', name: 'Food & Dining' },
+  { id: 'transport', name: 'Transportation' },
+  { id: 'shopping', name: 'Shopping' },
+  { id: 'bills', name: 'Bills & Utilities' },
+  { id: 'entertainment', name: 'Entertainment' },
+  { id: 'healthcare', name: 'Healthcare' },
+  { id: 'other', name: 'Other' }
 ];
 
 const TIME_PERIODS = [
@@ -192,7 +192,6 @@ function App() {
   const tabs = [
     {
       label: "Analytics",
-      icon: "📊",
       content: (
         <div className="space-y-8 sm:space-y-12">
           {/* Charts */}
@@ -207,8 +206,7 @@ function App() {
             {/* Top Expenses Card */}
             <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 border border-gray-100 
                           transition-all duration-300 hover:shadow-xl">
-              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                <span className="text-purple-500 mr-2">🔝</span>
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
                 Top Expenses
               </h2>
               <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 scrollbar-hide">
@@ -217,12 +215,9 @@ function App() {
                   .slice(0, 5)
                   .map(expense => (
                     <div key={expense.id} 
-                      className="flex items-center justify-between p-3 bg-gray-50/80 rounded-lg hover:bg-blue-50/80 
-                               transition-all duration-200 border border-gray-100">
+                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-blue-50 
+                               transition-all duration-200 border border-gray-200">
                       <div className="flex items-center space-x-3 min-w-0">
-                        <span className="text-lg sm:text-xl">
-                          {EXPENSE_CATEGORIES.find(cat => cat.id === expense.category)?.icon || '📦'}
-                        </span>
                         <div className="min-w-0">
                           <p className="font-medium text-sm sm:text-base text-gray-900 truncate">
                             {expense.description}
@@ -239,8 +234,7 @@ function App() {
                   ))}
                 {filteredExpenses.length === 0 && (
                   <EmptyState 
-                    message="No expenses to show" 
-                    icon="📊" 
+                    message="No expenses to show"
                   />
                 )}
               </div>
@@ -249,59 +243,57 @@ function App() {
             {/* Insights Card */}
             <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 border border-gray-100
                           transition-all duration-300 hover:shadow-xl">
-              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                <span className="text-emerald-500 mr-2">💡</span>
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
                 Insights
               </h2>
               <div className="space-y-4">
                 {expenses.length > 0 ? (
                   <>
-                    <div className="p-3 bg-blue-50/80 rounded-lg border border-blue-100">
-                      <p className="font-medium text-sm sm:text-base text-blue-800">Monthly Average</p>
+                    <div className="p-3 bg-blue-50 rounded-lg border border-blue-100">
+                      <p className="font-medium text-sm sm:text-base text-blue-900">Monthly Average</p>
                       <div className="flex items-center justify-between mt-1">
-                        <p className="text-xs sm:text-sm text-blue-600">
+                        <p className="text-xs sm:text-sm text-blue-700">
                           Your average monthly spending
                         </p>
-                        <p className="font-semibold text-sm sm:text-base text-blue-800">
+                        <p className="font-semibold text-sm sm:text-base text-blue-900">
                           {formatCurrency(stats.thisMonthTotal / 30)}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="p-3 bg-purple-50/80 rounded-lg border border-purple-100">
-                      <p className="font-medium text-sm sm:text-base text-purple-800">Top Category</p>
+                    <div className="p-3 bg-indigo-50 rounded-lg border border-indigo-100">
+                      <p className="font-medium text-sm sm:text-base text-indigo-900">Top Category</p>
                       <div className="flex items-center justify-between mt-1">
                         <div className="flex items-center">
-                          <span className="mr-1 text-lg">{stats.mostFrequentCategory?.icon}</span>
-                          <p className="text-xs sm:text-sm text-purple-600">
+                          <p className="text-xs sm:text-sm text-indigo-700">
                             {stats.mostFrequentCategory?.name || 'None'}
                           </p>
                         </div>
-                        <p className="font-semibold text-sm sm:text-base text-purple-800">
+                        <p className="font-semibold text-sm sm:text-base text-indigo-900">
                           {formatCurrency(Object.values(stats.categoryTotals)[0] || 0)}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="p-3 bg-emerald-50/80 rounded-lg border border-emerald-100">
-                      <p className="font-medium text-sm sm:text-base text-emerald-800">Monthly Change</p>
+                    <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                      <p className="font-medium text-sm sm:text-base text-emerald-900">Monthly Change</p>
                       <div className="flex items-center justify-between mt-1">
-                        <p className="text-xs sm:text-sm text-emerald-600">
+                        <p className="text-xs sm:text-sm text-emerald-700">
                           {stats.monthlyChange >= 0 ? 'Increase' : 'Decrease'} from last month
                         </p>
-                        <p className={`font-semibold text-sm sm:text-base ${stats.monthlyChange >= 0 ? 'text-red-600' : 'text-emerald-600'}`}>
+                        <p className={`font-semibold text-sm sm:text-base ${stats.monthlyChange >= 0 ? 'text-rose-600' : 'text-emerald-700'}`}>
                           {stats.monthlyChange.toFixed(1)}%
                         </p>
                       </div>
                     </div>
                     
-                    <div className="p-3 bg-amber-50/80 rounded-lg border border-amber-100">
-                      <p className="font-medium text-sm sm:text-base text-amber-800">Largest Expense</p>
+                    <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                      <p className="font-medium text-sm sm:text-base text-slate-900">Largest Expense</p>
                       <div className="flex items-center justify-between mt-1">
-                        <p className="text-xs sm:text-sm text-amber-600 truncate max-w-[180px]">
+                        <p className="text-xs sm:text-sm text-slate-600 truncate max-w-[180px]">
                           {stats.highestExpense.description}
                         </p>
-                        <p className="font-semibold text-sm sm:text-base text-amber-800">
+                        <p className="font-semibold text-sm sm:text-base text-slate-900">
                           {formatCurrency(stats.highestExpense.amount)}
                         </p>
                       </div>
@@ -309,8 +301,7 @@ function App() {
                   </>
                 ) : (
                   <EmptyState 
-                    message="Add expenses to see insights" 
-                    icon="💡" 
+                    message="Add expenses to see insights"
                   />
                 )}
               </div>
@@ -321,7 +312,6 @@ function App() {
     },
     {
       label: "Expenses List",
-      icon: "📝",
       content: (
         <div className="space-y-4">
           {filteredExpenses.map((expense) => (
@@ -336,7 +326,6 @@ function App() {
           {filteredExpenses.length === 0 && (
             <EmptyState
               message="No expenses found. Add some expenses to get started!"
-              icon="🏷️"
             />
           )}
         </div>
@@ -344,13 +333,11 @@ function App() {
     },
     {
       label: "Summary",
-      icon: "📋",
       content: (
         <div className="space-y-8">
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
-              <h2 className="text-xl font-bold text-gray-900 mb-5 flex items-center">
-                <span className="mr-2 text-2xl">📅</span>
+              <h2 className="text-xl font-bold text-gray-900 mb-5">
                 Monthly Overview
               </h2>
               <div className="space-y-3">
@@ -371,35 +358,34 @@ function App() {
             </div>
             
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
-              <h2 className="text-xl font-bold text-gray-900 mb-5 flex items-center">
-                <span className="mr-2 text-2xl">📊</span>
+              <h2 className="text-xl font-bold text-gray-900 mb-5">
                 Statistics
               </h2>
               <div className="space-y-4">
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-600">Highest Expense</span>
-                    <span className="font-semibold text-red-600">{formatCurrency(stats.highestExpense.amount)}</span>
+                    <span className="text-gray-700 font-medium">Highest Expense</span>
+                    <span className="font-semibold text-rose-600">{formatCurrency(stats.highestExpense.amount)}</span>
                   </div>
-                  <p className="text-sm text-gray-500">{stats.highestExpense.description}</p>
+                  <p className="text-sm text-gray-600">{stats.highestExpense.description}</p>
                 </div>
                 
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-600">Lowest Expense</span>
-                    <span className="font-semibold text-green-600">{formatCurrency(stats.lowestExpense.amount)}</span>
+                    <span className="text-gray-700 font-medium">Lowest Expense</span>
+                    <span className="font-semibold text-emerald-600">{formatCurrency(stats.lowestExpense.amount)}</span>
                   </div>
-                  <p className="text-sm text-gray-500">{stats.lowestExpense.description}</p>
+                  <p className="text-sm text-gray-600">{stats.lowestExpense.description}</p>
                 </div>
                 
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-600">Average Expense</span>
+                    <span className="text-gray-700 font-medium">Average Expense</span>
                     <span className="font-semibold text-blue-600">
                       {formatCurrency(totalExpenses / (filteredExpenses.length || 1))}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500">Based on {filteredExpenses.length} expenses</p>
+                  <p className="text-sm text-gray-600">Based on {filteredExpenses.length} expenses</p>
                 </div>
               </div>
             </div>
@@ -500,14 +486,12 @@ function App() {
             title="This Month"
             value={formatCurrency(stats.thisMonthTotal)}
             subtext={`${stats.monthlyChange >= 0 ? '↑' : '↓'} ${Math.abs(stats.monthlyChange).toFixed(1)}% vs last month`}
-            icon="📅"
             color={stats.monthlyChange >= 0 ? 'red' : 'green'}
           />
           <StatCard
             title="Daily Average"
             value={formatCurrency(stats.dailyAverage)}
             subtext="This month"
-            icon="📊"
             color="blue"
           />
           <StatCard
@@ -515,14 +499,12 @@ function App() {
             value={Object.entries(stats.categoryTotals)
               .sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A'}
             subtext="Top category"
-            icon="🎯"
             color="purple"
           />
           <StatCard
             title="Total Expenses"
             value={formatCurrency(totalExpenses)}
             subtext="All time"
-            icon="💰"
             color="green"
           />
         </div>
@@ -533,8 +515,7 @@ function App() {
           {/* Left Column - Add Expense Form */}
           <div className="lg:col-span-1 order-2 lg:order-1">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sm:p-7 lg:sticky lg:top-24 hover:shadow-xl transition-shadow duration-300">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6 flex items-center">
-                <span className="mr-2 text-2xl">➕</span>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6">
                 Add New Expense
               </h2>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -544,7 +525,6 @@ function App() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="What did you spend on?"
-                  icon="📝"
                 />
                 <FormInput
                   label="Amount"
@@ -552,7 +532,6 @@ function App() {
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   placeholder="0.00"
-                  icon="💰"
                 />
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
@@ -563,7 +542,7 @@ function App() {
                   >
                     {EXPENSE_CATEGORIES.map(cat => (
                       <option key={cat.id} value={cat.id}>
-                        {cat.icon} {cat.name}
+                        {cat.name}
                       </option>
                     ))}
                   </select>
@@ -572,10 +551,9 @@ function App() {
                   type="submit"
                   className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 sm:py-3.5 px-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 
                            transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 
-                           focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center
+                           focus:ring-blue-500 focus:ring-offset-2
                            text-sm sm:text-base font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                 >
-                  <span className="mr-2">💾</span>
                   Add Expense
                 </button>
               </form>
@@ -625,7 +603,7 @@ function App() {
 }
 
 // Updated component with responsive classes
-function StatCard({ title, value, subtext, icon, color }) {
+function StatCard({ title, value, subtext, color }) {
   const colorClasses = {
     blue: 'from-blue-500 to-blue-600 text-white',
     green: 'from-emerald-500 to-emerald-600 text-white',
@@ -636,9 +614,8 @@ function StatCard({ title, value, subtext, icon, color }) {
   return (
     <div className={`rounded-2xl shadow-lg p-5 sm:p-6 bg-gradient-to-br ${colorClasses[color]} 
                     hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20`}>
-      <div className="flex items-center justify-between mb-3 sm:mb-4">
+      <div className="mb-3 sm:mb-4">
         <h2 className="text-base sm:text-lg font-semibold opacity-95">{title}</h2>
-        <span className="text-2xl sm:text-3xl opacity-90">{icon}</span>
       </div>
       <p className="text-2xl sm:text-3xl font-bold mb-2 break-words leading-tight">
         {value}
@@ -651,25 +628,20 @@ function StatCard({ title, value, subtext, icon, color }) {
 }
 
 // Updated form input component
-function FormInput({ label, type, value, onChange, placeholder, icon }) {
+function FormInput({ label, type, value, onChange, placeholder }) {
   return (
     <div>
       <label className="block text-sm font-semibold text-gray-700 mb-2">{label}</label>
-      <div className="relative">
-        <span className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-lg sm:text-xl z-10">
-          {icon}
-        </span>
-        <input
-          type={type}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          className="w-full pl-11 pr-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 
-                   focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                   text-sm sm:text-base transition-all duration-200 bg-white
-                   hover:border-gray-400 shadow-sm"
-        />
-      </div>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 
+                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+                 text-sm sm:text-base transition-all duration-200 bg-white
+                 hover:border-gray-400 shadow-sm"
+      />
     </div>
   );
 }
@@ -688,7 +660,7 @@ function FilterSelect({ label, value, onChange, options }) {
       >
         {options.map(option => (
           <option key={option.id} value={option.id}>
-            {option.icon} {option.name}
+            {option.name}
           </option>
         ))}
       </select>
@@ -702,17 +674,16 @@ function ExpenseItem({ expense, onDelete, onEdit, formatCurrency }) {
   
   return (
     <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 bg-white rounded-xl 
-                   hover:bg-blue-50/50 transition-all duration-200 space-y-3 sm:space-y-0 mb-3 sm:mb-4 
-                   border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-200">
+                   hover:bg-blue-50 transition-all duration-200 space-y-3 sm:space-y-0 mb-3 sm:mb-4 
+                   border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300">
       <div className="min-w-0 flex-1">
-        <p className="font-semibold text-gray-800 flex items-center text-sm sm:text-base">
-          <span className="mr-2 flex-shrink-0">{category.icon}</span>
+        <p className="font-semibold text-gray-800 text-sm sm:text-base">
           <span className="truncate">{expense.description}</span>
         </p>
         <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500 mt-1">
           <span className="font-medium">{expense.date}</span>
           <span className="hidden sm:inline text-gray-300">•</span>
-          <span className="px-2.5 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+          <span className="px-2.5 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
             {category.name}
           </span>
         </div>
@@ -724,17 +695,17 @@ function ExpenseItem({ expense, onDelete, onEdit, formatCurrency }) {
         <div className="flex space-x-2">
           <button
             onClick={() => onEdit(expense)}
-            className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition duration-200 hover:scale-110 active:scale-95"
+            className="px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50 rounded-lg border border-blue-300 hover:border-blue-400 transition duration-200"
             aria-label="Edit expense"
           >
-            <span className="text-lg sm:text-xl">✏️</span>
+            Edit
           </button>
           <button
             onClick={() => onDelete(expense.id)}
-            className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition duration-200 hover:scale-110 active:scale-95"
+            className="px-3 py-1.5 text-sm font-medium text-rose-700 hover:bg-rose-50 rounded-lg border border-rose-300 hover:border-rose-400 transition duration-200"
             aria-label="Delete expense"
           >
-            <span className="text-lg sm:text-xl">🗑️</span>
+            Delete
           </button>
         </div>
       </div>
@@ -743,27 +714,13 @@ function ExpenseItem({ expense, onDelete, onEdit, formatCurrency }) {
 }
 
 // Component for empty state
-function EmptyState({ message, icon }) {
+function EmptyState({ message }) {
   return (
-    <div className="text-center py-6 sm:py-8 text-gray-500">
-      <span className="text-3xl sm:text-4xl block mb-3 sm:mb-4">{icon}</span>
-      <p className="text-sm sm:text-base">{message}</p>
+    <div className="text-center py-8 sm:py-12 text-gray-500">
+      <p className="text-sm sm:text-base font-medium">{message}</p>
     </div>
   );
 }
 
-// New QuickActionButton component
-function QuickActionButton({ icon, label, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="flex items-center justify-center w-full sm:w-auto space-x-2 px-2 sm:px-4 py-2 bg-gray-100 hover:bg-gray-200 
-                 rounded-lg transition duration-200 text-gray-700 text-xs sm:text-sm"
-    >
-      <span className="text-sm sm:text-lg">{icon}</span>
-      <span className="whitespace-nowrap">{label}</span>
-    </button>
-  );
-}
 
 export default App;

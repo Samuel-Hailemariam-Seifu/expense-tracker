@@ -20,7 +20,6 @@ export function TabView({ tabs }) {
               {activeTab === index && (
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
               )}
-              <span className="mr-2 text-base sm:text-lg">{tab.icon}</span>
               {tab.label}
             </button>
           ))}

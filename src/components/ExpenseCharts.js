@@ -206,8 +206,7 @@ export function ExpenseCharts({ expenses, categoryTotals, formatCurrency }) {
     <div className="space-y-6 sm:space-y-10 max-w-5xl mx-auto overflow-hidden">
       {/* Expense Trend Chart */}
       <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
-        <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-6 flex items-center">
-          <span className="text-blue-500 mr-2">📈</span>
+        <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-6">
           Expense Trend
         </h2>
         <div className="h-[220px] sm:h-[300px] lg:h-[450px] relative">
@@ -394,9 +393,6 @@ export function ExpenseCharts({ expenses, categoryTotals, formatCurrency }) {
                   <div key={category} 
                     className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
                     <div className="flex items-center space-x-3 min-w-0">
-                      <span className="text-xl sm:text-2xl">
-                        {EXPENSE_CATEGORIES[category]?.icon || '📦'}
-                      </span>
                       <div className="min-w-0">
                         <p className="font-medium text-sm sm:text-base text-gray-900 truncate">
                           {EXPENSE_CATEGORIES[category]?.name || category}

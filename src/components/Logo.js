@@ -3,7 +3,7 @@ import React from 'react';
 export function Logo({ size = 40, className = "" }) {
   return (
     <div 
-      className={`flex items-center justify-center rounded-lg ${className}`}
+      className={`flex items-center justify-center rounded-lg font-bold text-white ${className}`}
       style={{ 
         width: size, 
         height: size,
@@ -11,7 +11,7 @@ export function Logo({ size = 40, className = "" }) {
         boxShadow: '0 4px 6px rgba(59, 130, 246, 0.5)'
       }}
     >
-      <span style={{ fontSize: size * 0.6 }}>💸</span>
+      <span style={{ fontSize: size * 0.4 }}>ET</span>
     </div>
   );
 } 
