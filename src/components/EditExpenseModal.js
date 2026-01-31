@@ -26,10 +26,10 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 p-3 sm:p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 w-full max-w-md">
-        <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-3 sm:mb-6 flex items-center">
-          <span className="mr-2">✏️</span>
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4">
+      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-5 sm:p-7 w-full max-w-md animate-in fade-in zoom-in duration-200">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6 flex items-center">
+          <span className="mr-2 text-2xl">✏️</span>
           Edit Expense
         </h2>
         
@@ -40,7 +40,7 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm shadow-sm hover:border-gray-400 transition-all duration-200"
             />
           </div>
 
@@ -50,7 +50,7 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm shadow-sm hover:border-gray-400 transition-all duration-200"
             />
           </div>
 
@@ -59,7 +59,7 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm shadow-sm hover:border-gray-400 transition-all duration-200 bg-white"
             >
               {categories.map(cat => (
                 <option key={cat.id} value={cat.id}>
@@ -75,15 +75,15 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm shadow-sm hover:border-gray-400 transition-all duration-200"
             />
           </div>
 
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 pt-2 sm:pt-4">
             <button
               type="submit"
-              className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 
-                       transition duration-200 flex items-center justify-center text-xs sm:text-sm"
+              className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 px-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 
+                       transition-all duration-200 flex items-center justify-center text-sm font-semibold shadow-md hover:shadow-lg"
             >
               <span className="mr-2">💾</span>
               Save Changes
@@ -91,8 +91,8 @@ export function EditExpenseModal({ expense, onSave, onCancel, categories }) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 
-                       transition duration-200 flex items-center justify-center text-xs sm:text-sm"
+              className="flex-1 bg-gray-100 text-gray-700 py-2.5 px-4 rounded-xl hover:bg-gray-200 
+                       transition-all duration-200 flex items-center justify-center text-sm font-semibold"
             >
               <span className="mr-2">❌</span>
               Cancel

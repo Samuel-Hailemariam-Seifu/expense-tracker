@@ -205,7 +205,7 @@ export function ExpenseCharts({ expenses, categoryTotals, formatCurrency }) {
   return (
     <div className="space-y-6 sm:space-y-10 max-w-5xl mx-auto overflow-hidden">
       {/* Expense Trend Chart */}
-      <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-3 sm:p-6 border border-gray-100">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
         <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-6 flex items-center">
           <span className="text-blue-500 mr-2">📈</span>
           Expense Trend
@@ -332,7 +332,7 @@ export function ExpenseCharts({ expenses, categoryTotals, formatCurrency }) {
       {/* Analytics Grid - Improved layout for desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
         {/* Category Distribution Chart */}
-        <div className="bg-white rounded-2xl shadow-xl p-3 sm:p-6">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
           <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-6">Category Distribution</h2>
           <div className="h-[220px] sm:h-[300px] relative">
             {total === 0 ? (
@@ -383,7 +383,7 @@ export function ExpenseCharts({ expenses, categoryTotals, formatCurrency }) {
         </div>
 
         {/* Category List */}
-        <div className="bg-white rounded-2xl shadow-xl p-3 sm:p-6">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
           <h2 className="text-lg sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-6">Category Breakdown</h2>
           <div className="space-y-2 max-h-[220px] sm:max-h-[300px] overflow-y-auto pr-2">
             {Object.entries(categoryTotals)

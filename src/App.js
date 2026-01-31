@@ -203,10 +203,10 @@ function App() {
           />
           
           {/* Additional Analytics - Improved spacing for desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {/* Top Expenses Card */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-100 
-                          transition-all duration-300 hover:shadow-lg">
+            <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 border border-gray-100 
+                          transition-all duration-300 hover:shadow-xl">
               <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 flex items-center">
                 <span className="text-purple-500 mr-2">🔝</span>
                 Top Expenses
@@ -247,8 +247,8 @@ function App() {
             </div>
 
             {/* Insights Card */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-100
-                          transition-all duration-300 hover:shadow-lg">
+            <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-6 border border-gray-100
+                          transition-all duration-300 hover:shadow-xl">
               <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 flex items-center">
                 <span className="text-emerald-500 mr-2">💡</span>
                 Insights
@@ -347,9 +347,12 @@ function App() {
       icon: "📋",
       content: (
         <div className="space-y-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl shadow-xl p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Monthly Overview</h2>
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
+              <h2 className="text-xl font-bold text-gray-900 mb-5 flex items-center">
+                <span className="mr-2 text-2xl">📅</span>
+                Monthly Overview
+              </h2>
               <div className="space-y-3">
                 {Object.entries(stats.monthlyExpenses)
                   .sort(([a], [b]) => b.localeCompare(a))
@@ -367,8 +370,11 @@ function App() {
               </div>
             </div>
             
-            <div className="bg-white rounded-2xl shadow-xl p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Statistics</h2>
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
+              <h2 className="text-xl font-bold text-gray-900 mb-5 flex items-center">
+                <span className="mr-2 text-2xl">📊</span>
+                Statistics
+              </h2>
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex justify-between items-center mb-2">
@@ -447,26 +453,31 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-4 sm:py-8 overflow-hidden">
-      {/* Navigation Bar - Updated with glass effect */}
-      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md bg-gray-900/90 shadow-lg z-50">
-        <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-4 sm:py-8 overflow-hidden">
+      {/* Navigation Bar - Professional glass effect */}
+      <nav className="fixed top-0 left-0 right-0 backdrop-blur-lg bg-white/80 border-b border-gray-200/50 shadow-sm z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             {/* App Title with Logo */}
-            <div className="flex items-center space-x-2">
-              <Logo size={36} />
-              <h1 className="text-xl sm:text-2xl font-bold text-white">Expense Tracker</h1>
+            <div className="flex items-center space-x-3">
+              <Logo size={40} />
+              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Expense Tracker
+              </h1>
             </div>
 
             {/* Currency Selector */}
-            <div className="w-full sm:w-auto max-w-[200px]">
+            <div className="w-full sm:w-auto max-w-[220px]">
               {loading ? (
-                <span className="text-white text-sm">Loading rates...</span>
+                <div className="flex items-center space-x-2 text-gray-600 text-sm">
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-600 border-t-transparent"></div>
+                  <span>Loading rates...</span>
+                </div>
               ) : (
                 <select
                   value={currency.code}
                   onChange={(e) => handleCurrencyChange(e.target.value)}
-                  className="w-full bg-gray-700 text-white rounded-lg px-3 py-2 text-sm"
+                  className="w-full bg-white text-gray-700 rounded-lg px-4 py-2.5 text-sm font-medium border border-gray-300 shadow-sm hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 >
                   {CURRENCIES.map(curr => (
                     <option key={curr.code} value={curr.code}>
@@ -481,9 +492,9 @@ function App() {
       </nav>
 
       {/* Main Content Container - Increased max width for desktop */}
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 pt-24 sm:pt-20">
-        {/* Stats Grid - Updated with glass effect cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28 sm:pt-24">
+        {/* Stats Grid - Professional stat cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {/* Stat Cards */}
           <StatCard
             title="This Month"
@@ -521,8 +532,11 @@ function App() {
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-10 mb-10">
           {/* Left Column - Add Expense Form */}
           <div className="lg:col-span-1 order-2 lg:order-1">
-            <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:sticky lg:top-24">
-              <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">Add New Expense</h2>
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sm:p-7 lg:sticky lg:top-24 hover:shadow-xl transition-shadow duration-300">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-5 sm:mb-6 flex items-center">
+                <span className="mr-2 text-2xl">➕</span>
+                Add New Expense
+              </h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <FormInput
                   label="Description"
@@ -541,11 +555,11 @@ function App() {
                   icon="💰"
                 />
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base bg-white shadow-sm hover:border-gray-400 transition-all duration-200"
                   >
                     {EXPENSE_CATEGORIES.map(cat => (
                       <option key={cat.id} value={cat.id}>
@@ -556,10 +570,10 @@ function App() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-2 sm:py-3 px-4 rounded-lg hover:bg-blue-700 
-                           transition duration-200 ease-in-out focus:outline-none focus:ring-2 
+                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 sm:py-3.5 px-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 
+                           transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 
                            focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center
-                           text-sm sm:text-base"
+                           text-sm sm:text-base font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                 >
                   <span className="mr-2">💾</span>
                   Add Expense
@@ -571,7 +585,7 @@ function App() {
           {/* Right Column - Tabbed View */}
           <div className="lg:col-span-2 order-1 lg:order-2">
             {/* Filters */}
-            <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 mb-6 sm:mb-10">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sm:p-6 mb-6 sm:mb-8">
               <div className="flex flex-col sm:flex-row gap-4">
                 <FilterSelect
                   label="Category"
@@ -620,17 +634,17 @@ function StatCard({ title, value, subtext, icon, color }) {
   };
 
   return (
-    <div className={`rounded-2xl shadow-xl p-4 sm:p-6 bg-gradient-to-br ${colorClasses[color]} 
-                    hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1`}>
-      <div className="flex items-center justify-between mb-2 sm:mb-4">
-        <h2 className="text-lg sm:text-xl font-semibold">{title}</h2>
-        <span className="text-xl sm:text-2xl opacity-90">{icon}</span>
+    <div className={`rounded-2xl shadow-lg p-5 sm:p-6 bg-gradient-to-br ${colorClasses[color]} 
+                    hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20`}>
+      <div className="flex items-center justify-between mb-3 sm:mb-4">
+        <h2 className="text-base sm:text-lg font-semibold opacity-95">{title}</h2>
+        <span className="text-2xl sm:text-3xl opacity-90">{icon}</span>
       </div>
-      <p className="text-xl sm:text-3xl font-bold mb-1 sm:mb-2 break-words">
+      <p className="text-2xl sm:text-3xl font-bold mb-2 break-words leading-tight">
         {value}
       </p>
       {subtext && (
-        <p className="text-xs sm:text-sm opacity-80">{subtext}</p>
+        <p className="text-xs sm:text-sm opacity-90 font-medium">{subtext}</p>
       )}
     </div>
   );
@@ -640,9 +654,9 @@ function StatCard({ title, value, subtext, icon, color }) {
 function FormInput({ label, type, value, onChange, placeholder, icon }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      <label className="block text-sm font-semibold text-gray-700 mb-2">{label}</label>
       <div className="relative">
-        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base sm:text-lg">
+        <span className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-lg sm:text-xl z-10">
           {icon}
         </span>
         <input
@@ -650,9 +664,10 @@ function FormInput({ label, type, value, onChange, placeholder, icon }) {
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="w-full pl-10 pr-4 py-2 sm:py-3 rounded-lg border border-gray-300 
-                   focus:ring-2 focus:ring-blue-500 focus:border-transparent 
-                   text-sm sm:text-base"
+          className="w-full pl-11 pr-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 
+                   focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+                   text-sm sm:text-base transition-all duration-200 bg-white
+                   hover:border-gray-400 shadow-sm"
         />
       </div>
     </div>
@@ -663,13 +678,13 @@ function FormInput({ label, type, value, onChange, placeholder, icon }) {
 function FilterSelect({ label, value, onChange, options }) {
   return (
     <div className="w-full sm:flex-1">
-      <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      <label className="block text-sm font-semibold text-gray-700 mb-2">{label}</label>
       <select
         value={value}
         onChange={onChange}
-        className="w-full px-3 py-2 sm:py-3 rounded-lg border border-gray-300 
-                 focus:ring-2 focus:ring-blue-500 focus:border-transparent 
-                 text-sm sm:text-base bg-white"
+        className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 
+                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+                 text-sm sm:text-base bg-white shadow-sm hover:border-gray-400 transition-all duration-200"
       >
         {options.map(option => (
           <option key={option.id} value={option.id}>
@@ -686,18 +701,18 @@ function ExpenseItem({ expense, onDelete, onEdit, formatCurrency }) {
   const category = EXPENSE_CATEGORIES.find(cat => cat.id === expense.category) || EXPENSE_CATEGORIES[6];
   
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 bg-white/90 rounded-xl 
-                   hover:bg-blue-50 transition-all duration-200 space-y-2 sm:space-y-0 mb-3 sm:mb-4 
-                   border border-gray-100 shadow-sm hover:shadow-md">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 bg-white rounded-xl 
+                   hover:bg-blue-50/50 transition-all duration-200 space-y-3 sm:space-y-0 mb-3 sm:mb-4 
+                   border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-200">
       <div className="min-w-0 flex-1">
         <p className="font-semibold text-gray-800 flex items-center text-sm sm:text-base">
           <span className="mr-2 flex-shrink-0">{category.icon}</span>
           <span className="truncate">{expense.description}</span>
         </p>
-        <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-500">
-          <span>{expense.date}</span>
-          <span className="hidden sm:inline">•</span>
-          <span className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs">
+        <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500 mt-1">
+          <span className="font-medium">{expense.date}</span>
+          <span className="hidden sm:inline text-gray-300">•</span>
+          <span className="px-2.5 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
             {category.name}
           </span>
         </div>
@@ -706,17 +721,17 @@ function ExpenseItem({ expense, onDelete, onEdit, formatCurrency }) {
         <span className="text-base sm:text-lg font-semibold text-gray-800">
           {formatCurrency(expense.amount)}
         </span>
-        <div className="flex space-x-1 sm:space-x-2">
+        <div className="flex space-x-2">
           <button
             onClick={() => onEdit(expense)}
-            className="p-1.5 sm:p-2 text-blue-600 hover:bg-blue-100 rounded-full transition duration-200"
+            className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition duration-200 hover:scale-110 active:scale-95"
             aria-label="Edit expense"
           >
             <span className="text-lg sm:text-xl">✏️</span>
           </button>
           <button
             onClick={() => onDelete(expense.id)}
-            className="p-1.5 sm:p-2 text-red-600 hover:bg-red-100 rounded-full transition duration-200"
+            className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition duration-200 hover:scale-110 active:scale-95"
             aria-label="Delete expense"
           >
             <span className="text-lg sm:text-xl">🗑️</span>

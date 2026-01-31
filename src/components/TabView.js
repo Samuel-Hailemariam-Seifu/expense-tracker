@@ -4,20 +4,23 @@ export function TabView({ tabs }) {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
       {/* Tab Headers */}
-      <div className="overflow-x-auto scrollbar-hide">
-        <div className="flex min-w-max border-b">
+      <div className="overflow-x-auto scrollbar-hide bg-gray-50/50">
+        <div className="flex min-w-max border-b border-gray-200">
           {tabs.map((tab, index) => (
             <button
               key={index}
-              className={`flex items-center whitespace-nowrap px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-medium transition-all duration-300
+              className={`flex items-center whitespace-nowrap px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold transition-all duration-300 relative
                 ${activeTab === index 
-                  ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50' 
-                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'}`}
+                  ? 'text-blue-600 bg-white' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'}`}
               onClick={() => setActiveTab(index)}
             >
-              <span className="mr-1 sm:mr-2">{tab.icon}</span>
+              {activeTab === index && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              )}
+              <span className="mr-2 text-base sm:text-lg">{tab.icon}</span>
               {tab.label}
             </button>
           ))}
@@ -25,7 +28,7 @@ export function TabView({ tabs }) {
       </div>
 
       {/* Tab Content */}
-      <div className="p-4 sm:p-8">
+      <div className="p-5 sm:p-8">
         {tabs[activeTab].content}
       </div>
     </div>
